@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href={% static 'css/reset.css' %} rel="stylesheet">
+    <link href={% static 'css/style.css' %} rel="stylesheet">
+    <link href={% static 'css/font/iconfont.css' %} rel="stylesheet">
+</head>
+<body>
+   <div class="container">
+       <div class="header">
+           <div class="wrap">
+               <a class="logo" href="#"><span>运维自动发布系统</span></a>
+               <ul class="userMenu">
+                    {% if user.is_authenticated %}
+                        <li><a>Welcome:<B>{{ user.username }}</B></a><li>
+                        <li><a href="/logout/?next=/login/">Logout</a></li>
+                    {% endif %}
+               </ul>
+           </div>
+       </div>
+       <div class="mainContent">
+           <div class="slider">
+               <div class="search-area">
+                   <i class="iconfont icon-sousuo"></i>
+                   <input type="text" class="search" name="search" placeholder="搜索"/>
+               </div>
+               <div class="sliderMenu-area">
+			       <div class="loading"><img src={% static 'images/loading.gif' %} width="24px"></div>
+                   <ul class="sliderMenu-list"></ul>                                             
+               </div>
+           </div>
+           <div class="main">
+             		   
+           </div><!--main end-->	 
+       </div><!--mainContent end-->
+   </div><!--container end-->
+   
+  
+    <!-- 侧边滑动面板 -->
+	<div class="panel-container">
+		<div class="overlay"></div> 
+			<div class="slider-panel">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					<span class="panel-title">192.168.192.114</span>
+					<div class="close"><span>&times;</span></div>
+				</div>
+				<div class="panel-body"></div>
+			</div>
+		 </div> 
+	</div>	 
+		   
+   <!-- 模态框 -->
+   <div class="modal-dialog-box">
+      <div class="overlay"></div>
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<div class="close"><span>&times;</span></div>
+		  </div>
+		  <div class="modal-body">
+			<p>您确定要退出吗？</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default btn-cancel">取消</button>
+			<button type="button" class="btn btn-primary btn-sure" bid="logout">确定</button>
+		  </div>
+		</div>
+	  </div>
+   </div>
+   
+</body>
+</html>
+<script src={% static 'js/jquery-1.10.2.min.js' %}></script>
+<script src={% static 'js/pagination.js' %}></script>
+<script src={% static 'js/createDom.js' %}></script>
+<script src={% static 'js/bindEvent.js' %}></script>
+<script>
+ $(function(){
+	  var temp = {};
+
+	  /*点击操作按钮*/
+	  $('body').on('click', '.card-cell a', function() {
+		  var param = $(this).attr('attr');
+		  var ip = $(this).parent().attr('ip');
+		  temp = {
+			  param: param,
+			  ip: ip
+		  };
+          console.log(temp);
+		  setModalDialog("您确定要"+$(this).text()+"吗？");
+	  });
+
+	  /*点击弹出确定按钮*/
+	  $('.modal-dialog-box .btn-sure').click(function() {
+		  //todo:根据参数temp发送ajax请求到后台，成功则打开
+		  showPanel(temp);
+	  });
+
+	/** 显示模态框、设置模态框提示信息、修改模态框确定按钮标识 */
+	function setModalDialog(content){
+	   // 显示对话框
+	  $(".overlay,.modal-dialog-box").show();
+	  $(".modal-body p").html(content);
+	}
+
+	 /** 显示右侧滑动面板*/
+	function showPanel(temp){
+	  // 单击启动等按钮发送ajax请求，返回处理结果显示在右侧滑动面板中
+	  $.ajax({
+        url: "/result/",
+        type: "post",
+        data: temp,
+        dataType: "json",
+        success: function(data){
+            //data = typeof data === 'string' ? [data] : data;
+			initPanel(data, temp.ip);
+		},
+        error: function(){
+		  alert("ajax error!");
+		}
+	  });
+	}
+
+	  /*为panel初始化数据*/
+	  function initPanel(data,title) {
+		  var panel = "";
+		  for(var i=0,len=data.length; i<len; i+=1 ){
+			  panel += '<div class="panel-content">'+data[i]+'</div>';
+		  }
+		  $(".panel-body").html(panel);
+		  // 显示右侧面板
+		  $(".panel-container,.overlay").show();
+		  $(".slider-panel .panel-title").text(title);
+		  $(".slider-panel").show().animate({right: 0},200);
+	  }
+
+  });
+</script>

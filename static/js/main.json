@@ -1,0 +1,31 @@
+
+{
+	  "data": [
+		{
+		   "id": "1",
+		   "ip": "192.168.206.142",
+           "actionstop": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actionstart": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actionrestart": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actiondeploy": "/Users/apple/ansible/ansible-playbook/test.yml"
+	    },
+		
+
+		
+		{
+		   "id": "2",
+		   "ip": "192.168.206.143",
+           "actionstop": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actionstart": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actionrestart": "/Users/apple/ansible/ansible-playbook/test.yml",
+           "actiondeploy": "/Users/apple/ansible/ansible-playbook/test.yml"
+	    }
+		
+	  ],
+      
+      "page": {
+	    "pageSize": 3,
+		"totalCount": 56
+	  }  	  
+}
+	 
