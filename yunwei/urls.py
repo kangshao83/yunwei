@@ -38,6 +38,6 @@ urlpatterns = [
     url(r'^logout/$', logout),
     url(r'^index/$', index),
     url(r'^api/', include(v1_api.urls)),
-    url(r'^api2/', include(v2_api.urls)),
+    #url(r'^api2/', include(v2_api.urls)),
     url(r'^get_host_list/', get_host_list),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

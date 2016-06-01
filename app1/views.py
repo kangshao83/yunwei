@@ -1,7 +1,6 @@
 #coding=utf8
-from django.shortcuts import render,render_to_response ,HttpResponse,HttpResponseRedirect,get_object_or_404
-from django.template import RequestContext,Context
-from django.http import JsonResponse
+from django.shortcuts import render,render_to_response ,HttpResponse,HttpResponseRedirect
+from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.serializers import serialize
@@ -11,14 +10,12 @@ import commands,os
 import json
 import sys
 import datetime
-from app1.models import Groups, hosts
+from app1.models import hosts
 
 default_encoding = 'utf-8'
 if sys.getdefaultencoding() != default_encoding:
     reload(sys)
     sys.setdefaultencoding(default_encoding)
-
-
 
 # Create your views here.
 @login_required
@@ -36,14 +33,10 @@ def run_com(request):
         s = commands.getstatusoutput(cmd)
         data = []
         stat = s[0]
-        if stat == 0:
-            stat = "Success"
-        else:
-            stat = "Error"
         result = s[1]
         result = "<pre>"+result+"</pre>"
 
-        data = ["执行的命令："+cmd, "执行状态：:"+stat, "执行结果："+result]
+        data = [cmd, stat, result]
         data = json.dumps(data)
         print data
         return HttpResponse(data)
@@ -113,12 +106,7 @@ def user_logout(request):
 @login_required
 def get_host_list(request):
     if request.method == 'POST':
-        #data = {}
-        dict={"data":[],"page":[]}
         groupname = request.POST.get('groupname')
-        #hosts_list = hosts.objects.values().filter(groupname=groupname)
-        #row=hosts.objects.get(groupname=groupname)
-        #print row.toJSON()
         hosts_list = serialize('json', hosts.objects.filter(groupname=groupname))
         hosts_list = json.loads(hosts_list)
         hosts_nums = len(hosts_list)
@@ -128,9 +116,6 @@ def get_host_list(request):
         while (i < hosts_nums):
             hosts_obj = hosts_list[i]['fields']
             outputs.append(hosts_obj)
-
-
-            #data = { "data": hosts_obj, 'page':{'pageSize':pageSize,'totalCount':hosts_nums}}
             i = i + 1
         hosts_lists = outputs
         print hosts_lists

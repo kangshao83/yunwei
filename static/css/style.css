@@ -130,7 +130,7 @@
 
 
 
-/* Ö÷ÌåÄÚÈÝÑùÊ½*/
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
  .main, .slider {
 	position: absolute;
 	top: 50px;
@@ -185,7 +185,7 @@
 .oper-box {
 	overflow: hidden;
 }
-/*ÃÀ»¯¸´Ñ¡¿ò*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½*/
 .checkbox-wraper {
 	position: relative;
 	float: left;
@@ -261,7 +261,7 @@ input[type=checkbox], input[type=radio] {
 	float: left;
 	margin-left: 30px;
 }
-/* button°´Å¥ */
+/* buttonï¿½ï¿½Å¥ */
 .btn {
 	display: inline-block;
     margin-bottom: 0;
@@ -315,7 +315,7 @@ input[type=checkbox], input[type=radio] {
     padding-bottom: 6px;
 }
 
-/* ¿¨Æ¬ */
+/* ï¿½ï¿½Æ¬ */
 .card {
 	width: 950px; 
 	min-height: 147px;
@@ -381,7 +381,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 
-/* ·ÖÒ³ */
+/* ï¿½ï¿½Ò³ */
 .pagination-box {
 	text-align: center;
 	margin-top: 30px;
@@ -473,7 +473,7 @@ input[type=checkbox], input[type=radio] {
     border: 1px solid #d9d9d9;
 }
 
-/* Çå³ý¸¡¶¯ */
+/* ï¿½ï¿½ï¿½ */
 .clearfix:after { 
     content:"\200B"; 
     display:block; 
@@ -482,7 +482,7 @@ input[type=checkbox], input[type=radio] {
 } 
 .clearfix {*zoom:1;}/*IE/7/6*/
 
-/* Ä£Ì¬¿òÑùÊ½ */
+/* Ä£Ì¬ï¿½ï¿½ï¿½ï¿½Ê½ */
 .modal-dialog-box {
 	display: none;
 }
@@ -556,7 +556,7 @@ input[type=checkbox], input[type=radio] {
     border-top: 1px solid #e5e5e5;
 }
 
-/* »¬¶¯Ãæ°å */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .panel-container {
 	display: none;
 }
@@ -566,7 +566,7 @@ input[type=checkbox], input[type=radio] {
 	right: -500px;
 	bottom: 0;
 	border: 1px solid #ddd;
-	width: 800px;
+	width: 900px;
 	background: #fff;
 	z-index: 2000;
 }

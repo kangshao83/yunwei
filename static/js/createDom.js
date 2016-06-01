@@ -4,7 +4,7 @@ $(function(){
 	// todo 初始化加载菜单树
 	$.ajax({  
         type:"get",  
-        url:"http://127.0.0.1:8000/api/v1/groups/",
+        url:"/api/v1/groups/",
         dataType: "json", 	
         success: function(data){
             var data = data.objects
@@ -14,6 +14,7 @@ $(function(){
 		  // 隐藏loading
 		  $(".sliderMenu-area .loading").hide();
           loadMenu(data);
+            $('.menu-item:first').trigger('click');
         },
 		error: function(){
 		  alert("请求失败！");		  

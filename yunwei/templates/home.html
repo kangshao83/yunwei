@@ -128,9 +128,13 @@
 	  /*为panel初始化数据*/
 	  function initPanel(data,title) {
 		  var panel = "";
-		  for(var i=0,len=data.length; i<len; i+=1 ){
-			  panel += '<div class="panel-content">'+data[i]+'</div>';
-		  }
+          panel += '<div class="panel-content">执行命令:<br>'+data[0]+'</div>';
+          if(data[1] == '0') {
+              panel += '<div class="panel-content">执行状态:<i style="color:rgb(57,163,14)">Success</i></div>';
+          }else {
+              panel += '<div class="panel-content">执行状态:<i style="color:#cf0000">Error</i></div>';
+          }
+          panel += '<div class="panel-content">执行结果:<br>'+data[2]+'</div>';
 		  $(".panel-body").html(panel);
 		  // 显示右侧面板
 		  $(".panel-container,.overlay").show();
