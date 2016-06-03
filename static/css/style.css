@@ -611,3 +611,97 @@ input[type=checkbox], input[type=radio] {
     color: #666;
     top: 12px;
 }
+
+
+/*element: 上传文件*/
+.oper-box {
+    margin-bottom: 20px;
+}
+
+.oper-box label{
+    float: left;
+    margin-right: 10px;
+    color: #666;
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.upload {
+    position: relative;
+    float: left;
+}
+
+.upload input[type=text] {
+    float: left;
+    width: 300px;
+    height: 36px;
+    margin-right: 10px;
+    padding: 0 5px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.upload input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 36px;
+    padding: 0 5px;
+    opacity: 0;
+}
+
+.upload .btn {
+    float: left;
+    height: 36px;
+}
+
+
+.dialog {
+    display: none;
+    z-index: 1100;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    padding-bottom: 52px;
+    min-height: 100px;
+    transform: translate(-50%, -60%);
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+
+}
+
+.dialog__bg {
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.dialog__ft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    padding: 10px 20px;
+    text-align: center;
+    border-top: 1px solid #efefef;
+}
+
+.dialog__ft .btn {
+    height: 32px;
+    min-width: 80px;
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    background-color: #2db7f5;
+}
+
+.dialog__ft .btn:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}

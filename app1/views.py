@@ -4,12 +4,13 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.serializers import serialize
-
+from django.conf import settings
 
 import commands,os
 import json
 import sys
 import datetime
+
 from app1.models import hosts
 
 default_encoding = 'utf-8'
@@ -44,21 +45,24 @@ def run_com(request):
         #return HttpResponse("<h1>test</h1>")
     #return render(request, 'result.html', {'cmd': cmd,'stat': stat, 'result': result})
 
+#def test(request):
+#    return render_to_response('upload.html',context_instance=RequestContext(request))
 
-@login_required
 def upload(request):
     if request.method == 'POST':
         path = request.POST.get('path')
-        #print path
-        handle_uploaded_file(request.FILES['file'], str(request.FILES['file']), str(path))
-        return HttpResponse("Successful")
-    return HttpResponse("Failed")
+        print path
+        file = request.FILES['file']
+        print file
+        handle_uploaded_file(file, str(file), str(path))
+        return HttpResponse("上传文件成功", content_type="application/json")
+    return HttpResponse("上传文件失败", content_type="application/json")
 
-@login_required
+
 def handle_uploaded_file(file, filename, path):
-    today = datetime.date.today()
-    today_str = today.strftime("%Y%m%d")
-    upload_path = str('upload/' + path + '/' + today_str  +'/')
+    #today = datetime.date.today()
+    #today_str = today.strftime("%Y%m%d")
+    upload_path = str('upload/' + path + '/')
     print upload_path
     if not os.path.exists(upload_path):
         os.makedirs(upload_path)

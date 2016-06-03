@@ -71,10 +71,19 @@
 		</div>
 	  </div>
    </div>
-   
+
+   <div class="overlay overlay--dialog"></div>
+    <!--模拟弹出-->
+    <div class="dialog">
+        <div class="dialog__bg">
+            内容
+        </div>
+        <div class="dialog__ft"><button type="button" class="btn">确定</button></div>
+    </div>
 </body>
 </html>
 <script src={% static 'js/jquery-1.10.2.min.js' %}></script>
+<script src={% static 'js/ajaxfileupload.js' %}></script>
 <script src={% static 'js/pagination.js' %}></script>
 <script src={% static 'js/createDom.js' %}></script>
 <script src={% static 'js/bindEvent.js' %}></script>
@@ -142,5 +151,15 @@
 		  $(".slider-panel").show().animate({right: 0},200);
 	  }
 
+     //关闭弹出
+     $('.dialog .btn').click(function() {
+         $('.overlay--dialog, .dialog').hide();
+     });
+
   });
+
+    function openDialog(tip) {
+        $('.overlay--dialog, .dialog').show();
+        $('.dialog__bg').text(tip);
+    }
 </script>

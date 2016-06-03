@@ -22,6 +22,7 @@ from app1.views import index as index
 from app1.views import run_com as result
 from app1.views import user_login as login
 from app1.views import user_logout as logout
+from app1.views import upload as upload
 from app1.views import get_host_list as get_host_list
 from app1.api import GroupsResource,HostsResource
 from tastypie.api import Api
@@ -37,6 +38,7 @@ urlpatterns = [
     url(r'^login/$', login),
     url(r'^logout/$', logout),
     url(r'^index/$', index),
+    url(r'^upload/$', upload),
     url(r'^api/', include(v1_api.urls)),
     #url(r'^api2/', include(v2_api.urls)),
     url(r'^get_host_list/', get_host_list),

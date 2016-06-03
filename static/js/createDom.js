@@ -77,7 +77,7 @@ $(function(){
 	       });      			
         },
 		error: function(){
-		  alert("请求失败！");
+            openDialog('请求失败');
 		}  
     }); 
 	  
@@ -87,7 +87,17 @@ $(function(){
     function loadMain_html(menuname,data) {
         $(".main").empty();
 	   var main_html = '<div class="breadcrumb-box"><ul class="breadcrumb"><li class="active">'+menuname+'</li></ul> </div>'+
-		   				'<div class="wrap">'+
+		   			   '<div class="wrap">'+
+                       '<div class="oper-box clear">' +
+                       '<form enctype="multipart/form-data">'+
+			           '<label>上传文件</label>' +
+			           '<div class="upload">' +
+			           '<input type="text">' +
+			           '<input type="file" id="file" name="file" >' +
+			           '<button type="button" value="Upload"  class="btn-primary btn">上传文件</button>' +
+                       '</form>'+
+			           '</div>'+
+                       '</div>'+
 					   '<div class="card clearfix">';
 
 			//生成card
@@ -96,6 +106,38 @@ $(function(){
 		//生成分页
 		main_html += '</div><div class="pagination-box"> <ul class="pagination"></ul></div></div>';
 		$(".main").append(main_html);
+
+        		/*输入框输入文件名*/
+		$('input[type=file]').change(function () {
+			$('.upload input[type=text]').val(this.value);
+
+		});
+
+		/*上传文件*/
+		$('.upload .btn').click(function() {
+            var value = $('.upload').find('input[type=file]').val()
+            console.log(value)
+			if(!value) return;
+			value = value.split('\\');
+			value = value[value.length - 1];
+			console.log(value, menuname);
+            $.ajaxFileUpload({
+                url:"/upload/",
+                type:"post",
+                secureuri: false,
+                fileElementId: 'file',
+                data: {"path": menuname},
+                dataType: "json",
+
+                success: function(data,status){
+                    openDialog(data);
+                    },
+                error: function(data,status){
+                    alert(data);
+		        }
+                }
+            )
+		});
     }
 
 
