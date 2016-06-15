@@ -1,0 +1,39 @@
+2016-06-15 11:18:19 kang is logout !!!!
+2016-06-15 11:20:16 kang is login suceess !!!!
+2016-06-15 11:23:46 kang choose test2 group !!!!
+2016-06-15 11:23:47 kang choose test1 group !!!!
+2016-06-15 11:37:05 kang choose test1 group !!!!
+2016-06-15 11:37:07 kang choose test2 group !!!!
+2016-06-15 11:37:34 kang choose test1 group !!!!
+2016-06-15 11:38:01 kang choose test1 group !!!!
+2016-06-15 11:38:40 kang choose test1 group !!!!
+2016-06-15 11:38:44 kang upload  to test1 suceess!!!!
+2016-06-15 11:39:28 kang choose test1 group !!!!
+2016-06-15 11:39:37 kang upload cffi-1.6.0.tar.gz to test1 suceess!!!!
+2016-06-15 11:40:17 kang choose test1 group !!!!
+2016-06-15 13:43:57|kang|choose test1 group!
+2016-06-15 13:44:00|kang|logout suceess!
+2016-06-15 13:44:22|kang|login suceess!
+2016-06-15 13:44:22|kang|choose test1 group!
+2016-06-15 13:44:27|kang|choose test2 group!
+2016-06-15 13:44:48|kang|upload DFS.tar.gz to test2 suceess!!!!
+2016-06-15 13:45:35|kang|logout suceess!
+2016-06-15 13:53:37|kang|username or password is not correct!
+2016-06-15 13:53:42|kang|login suceess!
+2016-06-15 13:53:42|kang|choose test1 group!
+2016-06-15 13:53:46|kang|choose test2 group!
+2016-06-15 13:53:46|kang|choose test1 group!
+2016-06-15 13:54:23|kang|choose test1 group!
+2016-06-15 13:55:32|kang|choose test1 group!
+2016-06-15 13:57:41|kang|choose test1 group!
+2016-06-15 13:57:48|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1" status:0
+2016-06-15 13:58:52|kang|logout suceess!
+2016-06-15 14:01:25|kang|login suceess!
+2016-06-15 14:01:26|kang|choose test1 group!
+2016-06-15 14:01:32|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-06-15 14:04:48|kang|logout suceess!
+2016-06-15 14:04:53|kang|username or password is not correct!
+2016-06-15 14:05:03|kang|login suceess!
+2016-06-15 14:05:03|kang|choose test1 group!
+2016-06-15 14:05:13|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-06-15 14:05:23|kang|logout suceess!

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,3 +131,22 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/login/'
 
 API_LIMIT_PER_PAGE = 0
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '/Users/apple/djangoproject/yunwei/log/' + 'AutoDeploy.info.' + datetime.datetime.now().strftime("%Y%m%d") + '.log',
+        },
+    },
+    'loggers': {
+        'yunwei': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

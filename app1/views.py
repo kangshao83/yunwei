@@ -4,12 +4,13 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.serializers import serialize
-from django.conf import settings
-
 import commands,os
 import json
 import sys
 import datetime
+import logging
+logger = logging.getLogger('yunwei')
+
 
 from app1.models import hosts
 
@@ -27,34 +28,30 @@ def index(request):
 def run_com(request):
     if request.method == 'POST':
         param  = request.POST['param']
-        print param
         ip = request.POST['ip']
-        print ip
         cmd = "ansible-playbook "+ param + " --extra-vars \"host=" + ip + "\""
+        log_cmd = str(cmd)
         s = commands.getstatusoutput(cmd)
         data = []
         stat = s[0]
+        log_stat = str(stat)
         result = s[1]
         result = "<pre>"+result+"</pre>"
-
         data = [cmd, stat, result]
         data = json.dumps(data)
-        print data
+        username = request.user.username
+        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "run:" + log_cmd + ",status:" + log_stat )
         return HttpResponse(data)
-    #else:
-        #return HttpResponse("<h1>test</h1>")
-    #return render(request, 'result.html', {'cmd': cmd,'stat': stat, 'result': result})
 
-#def test(request):
-#    return render_to_response('upload.html',context_instance=RequestContext(request))
 
 def upload(request):
     if request.method == 'POST':
         path = request.POST.get('path')
-        print path
         file = request.FILES['file']
-        print file
+        filename = str(file)
         handle_uploaded_file(file, str(file), str(path))
+        username = request.user.username
+        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "upload " + filename + " to " + path + " suceess!")
         return HttpResponse("上传文件成功", content_type="application/json")
     return HttpResponse("上传文件失败", content_type="application/json")
 
@@ -63,7 +60,7 @@ def handle_uploaded_file(file, filename, path):
     #today = datetime.date.today()
     #today_str = today.strftime("%Y%m%d")
     upload_path = str('upload/' + path + '/')
-    print upload_path
+    #print upload_path
     if not os.path.exists(upload_path):
         os.makedirs(upload_path)
     with open(upload_path + filename, 'wb+'
@@ -82,13 +79,18 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
+                # add user login log
+                logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "login suceess!")
                 return HttpResponseRedirect('/index/')
+
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponse("Your polls account is disabled.")
+                logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "is disabled!")
+                return HttpResponse("Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
+            logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "username or password is not correct!")
             return HttpResponse("Invalid login details supplied.")
 
     # The request is not a HTTP POST, so display the login form.
@@ -101,8 +103,9 @@ def user_login(request):
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
+    username = request.user.username
     logout(request)
-
+    logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "logout suceess!")
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')
 
@@ -122,10 +125,10 @@ def get_host_list(request):
             outputs.append(hosts_obj)
             i = i + 1
         hosts_lists = outputs
-        print hosts_lists
         data = { "data": hosts_lists, 'page':{'pageSize':pageSize,'totalCount':hosts_nums}}
         data = json.dumps(data)
-        print data
+        username = request.user.username
+        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" +"choose " + groupname + " group!")
+
     return HttpResponse(data, content_type="application/json")
 
-    #return JsonResponse(hosts_list)
