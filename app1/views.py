@@ -7,7 +7,6 @@ from django.core.serializers import serialize
 import commands,os
 import json
 import sys
-import datetime
 import logging
 logger = logging.getLogger('yunwei')
 
@@ -40,7 +39,7 @@ def run_com(request):
         data = [cmd, stat, result]
         data = json.dumps(data)
         username = request.user.username
-        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "run:" + log_cmd + ",status:" + log_stat )
+        logger.info(username + "|" + "run:" + log_cmd + ",status:" + log_stat )
         return HttpResponse(data)
 
 
@@ -51,7 +50,7 @@ def upload(request):
         filename = str(file)
         handle_uploaded_file(file, str(file), str(path))
         username = request.user.username
-        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "upload " + filename + " to " + path + " suceess!")
+        logger.info(username + "|" + "upload " + filename + " to " + path + " suceess!")
         return HttpResponse("上传文件成功", content_type="application/json")
     return HttpResponse("上传文件失败", content_type="application/json")
 
@@ -80,17 +79,17 @@ def user_login(request):
                 # We'll send the user back to the homepage.
                 login(request, user)
                 # add user login log
-                logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "login suceess!")
+                logger.info(username + "|" + "login suceess!")
                 return HttpResponseRedirect('/index/')
 
             else:
                 # An inactive account was used - no logging in!
-                logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "is disabled!")
+                logger.info(username + "|" + "is disabled!")
                 return HttpResponse("Your account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
-            logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "username or password is not correct!")
+            logger.info(username + "|" + "username or password is not correct!")
             return HttpResponse("Invalid login details supplied.")
 
     # The request is not a HTTP POST, so display the login form.
@@ -105,7 +104,7 @@ def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     username = request.user.username
     logout(request)
-    logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" + "logout suceess!")
+    logger.info(username + "|" + "logout suceess!")
     # Take the user back to the homepage.
     return HttpResponseRedirect('/login/')
 
@@ -128,7 +127,7 @@ def get_host_list(request):
         data = { "data": hosts_lists, 'page':{'pageSize':pageSize,'totalCount':hosts_nums}}
         data = json.dumps(data)
         username = request.user.username
-        logger.info(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "|" + username + "|" +"choose " + groupname + " group!")
+        logger.info(username + "|" +"choose " + groupname + " group!")
 
     return HttpResponse(data, content_type="application/json")
 

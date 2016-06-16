@@ -135,11 +135,19 @@ API_LIMIT_PER_PAGE = 0
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '%(asctime)s|%(levelname)s|%(message)s'
+        },
+    },
     'handlers': {
         'file': {
             'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': '/Users/apple/djangoproject/yunwei/log/' + 'AutoDeploy.info.' + datetime.datetime.now().strftime("%Y%m%d") + '.log',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'default',
+            'filename': os.path.join(BASE_DIR) + '/log/AutoDeploy.info.log',
+            'when': 'D',
+            'interval': 1,
         },
     },
     'loggers': {
