@@ -42,6 +42,8 @@ class hosts(models.Model):
 
 class hostsAdmin(admin.ModelAdmin):
     list_display = ('group','groupname','hostip','actionstart','actionstop','actionrestart','actiondeploy','actionbackup')
+    list_filter = ['groupname']
+    search_fields = ['hostip']
 
 admin.site.register(Groups, GroupsAdmin)
 admin.site.register(hosts, hostsAdmin)
