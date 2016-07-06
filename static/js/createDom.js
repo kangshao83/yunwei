@@ -158,13 +158,17 @@ $(function(){
 	//生成卡片列表
 	function createCard(cards) {
 		var cardstr = '';
+        //cards[2].time="2012-12-12 12:12:12"
 		for(var i=0,len=cards.length; i<len; i++)
         {
 
 			var card = cards[i];
 			cardstr += '<div class="card-content">' +
-				'<div class="card-body"><p>'+card.hostip+'</p></div>' +
-				'<div class="card-cell" ip="' + card.hostip + '">' +
+				'<div class="card-body"><p>'+card.hostip+'</p>' ;
+            cardstr += !card.optimes ? '<p style="font-size:12px;color:#999;">最近暂无操作</p>' :  '<p style="font-size:12px;color:#999;">最近一次操作：' + card.optimes + '</p>' ;
+
+            cardstr += '</div>' +
+                '<div class="card-cell" ip="' + card.hostip + '">' +
                 '<a href="javascript:;" attr="' + card.actionbackup + '" class="btn-card">备份</a> | ' +
 				'<a href="javascript:;" attr="' + card.actionstop + '" class="btn-card">停止</a> | ' +
 				'<a href="javascript:;" attr="' + card.actionstart + '" class="btn-card">启动</a> | ' +

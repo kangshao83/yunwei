@@ -8,6 +8,7 @@ import commands,os
 import json
 import sys
 import logging
+import datetime
 logger = logging.getLogger('yunwei')
 
 
@@ -38,6 +39,10 @@ def run_com(request):
         result = "<pre>"+result+"</pre>"
         data = [cmd, stat, result]
         data = json.dumps(data)
+        if stat == 0:
+            p = hosts.objects.get(hostip=ip)
+            p.optimes = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            p.save()
         username = request.user.username
         logger.info(username + "|" + "run:" + log_cmd + ",status:" + log_stat )
         return HttpResponse(data)
