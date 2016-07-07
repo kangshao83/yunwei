@@ -40,8 +40,26 @@ def run_com(request):
         data = [cmd, stat, result]
         data = json.dumps(data)
         if stat == 0:
+            action = ''
+            if "start" in param:
+                action = "start"
+                print action
+            elif "stop" in param:
+                action = "stop"
+                print action
+            elif "restart" in param:
+                action = "restart"
+                print action
+            elif "deploy" in param:
+                action = "deploy"
+                print action
+            elif "backup" in param:
+                action = "backup"
+                print action
+
             p = hosts.objects.get(hostip=ip)
             p.optimes = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            p.actiontype = action
             p.save()
         username = request.user.username
         logger.info(username + "|" + "run:" + log_cmd + ",status:" + log_stat )

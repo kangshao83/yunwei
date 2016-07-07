@@ -165,7 +165,7 @@ $(function(){
 			var card = cards[i];
 			cardstr += '<div class="card-content">' +
 				'<div class="card-body"><p>'+card.hostip+'</p>' ;
-            cardstr += !card.optimes ? '<p style="font-size:12px;color:#999;">最近暂无操作</p>' :  '<p style="font-size:12px;color:#999;">最近一次操作：' + card.optimes + '</p>' ;
+            cardstr += !card.optimes ? '<p style="font-size:12px;color:#999;">最近暂无操作</p>' :  '<p style="font-size:12px;color:#999;">最近一次操作：' + card.actiontype + ' at ' + card.optimes +  '</p>' ;
 
             cardstr += '</div>' +
                 '<div class="card-cell" ip="' + card.hostip + '">' +

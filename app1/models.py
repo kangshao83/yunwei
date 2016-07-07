@@ -30,6 +30,7 @@ class hosts(models.Model):
     actiondeploy = models.CharField(max_length=200, null=True, blank=True)
     actionbackup = models.CharField(max_length=200, null=True, blank=True)
     optimes = models.CharField(max_length=200, null=True, blank=True)
+    actiontype = models.CharField(max_length=200, null=True, blank=True)
     def __unicode__(self):
         #return self.hostip
         return unicode(self.hostip) or u''
@@ -42,7 +43,7 @@ class hosts(models.Model):
 
 
 class hostsAdmin(admin.ModelAdmin):
-    list_display = ('group','groupname','hostip','actionstart','actionstop','actionrestart','actiondeploy','actionbackup','optimes')
+    list_display = ('group','groupname','hostip','actionstart','actionstop','actionrestart','actiondeploy','actionbackup','optimes','actiontype')
     list_filter = ['groupname']
     search_fields = ['hostip']
 
