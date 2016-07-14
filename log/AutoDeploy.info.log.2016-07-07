@@ -1,0 +1,53 @@
+2016-07-06 14:49:49,444|INFO|kang|choose test1 group!
+2016-07-06 14:54:55,534|INFO|kang|choose test1 group!
+2016-07-06 14:55:21,404|INFO|kang|choose test1 group!
+2016-07-06 14:57:02,801|INFO|kang|choose test1 group!
+2016-07-06 14:57:22,495|INFO|kang|choose test1 group!
+2016-07-06 14:58:05,291|INFO|kang|choose test1 group!
+2016-07-06 14:58:48,784|INFO|kang|choose test1 group!
+2016-07-06 16:21:11,393|INFO|kang|choose test1 group!
+2016-07-06 16:21:30,568|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:24:09,376|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:29:31,734|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:36:03,937|INFO|kang|choose test1 group!
+2016-07-06 16:36:11,842|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:36:19,646|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.2",status:0
+2016-07-06 16:36:31,631|INFO|kang|run:ansible-playbook  --extra-vars "host=test1",status:256
+2016-07-06 16:38:32,166|INFO|kang|choose test1 group!
+2016-07-06 16:38:41,242|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:39:32,716|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:40:52,253|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-06 16:41:10,947|INFO|kang|choose test1 group!
+2016-07-06 17:02:29,578|INFO|kang|choose test1 group!
+2016-07-07 14:29:35,673|INFO|kang|choose test1 group!
+2016-07-07 14:40:24,795|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:42:16,136|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:43:36,188|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:44:06,269|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:47:25,506|INFO|kang|choose test1 group!
+2016-07-07 14:47:30,905|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.1",status:256
+2016-07-07 14:47:56,302|INFO|kang|choose test1 group!
+2016-07-07 14:48:04,961|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/start.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:49:01,090|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/start.yml --extra-vars "host=127.0.0.1",status:0
+2016-07-07 14:49:32,603|INFO|kang|run:ansible-playbook  --extra-vars "host=127.0.0.1",status:256
+2016-07-07 14:52:36,959|INFO|kang|choose test1 group!
+2016-07-07 14:52:39,082|INFO|kang|choose test2 group!
+2016-07-07 14:52:40,090|INFO|kang|choose test1 group!
+2016-07-07 14:53:32,409|INFO|kang|choose test1 group!
+2016-07-07 14:53:33,890|INFO|kang|choose test2 group!
+2016-07-07 14:53:35,154|INFO|kang|choose test1 group!
+2016-07-07 14:53:36,421|INFO|kang|choose test2 group!
+2016-07-07 14:53:37,599|INFO|kang|choose test1 group!
+2016-07-07 14:54:39,519|INFO|kang|choose test1 group!
+2016-07-07 14:57:07,572|INFO|kang|choose test1 group!
+2016-07-07 14:58:26,843|INFO|kang|choose test1 group!
+2016-07-07 14:58:51,828|INFO|kang|choose test1 group!
+2016-07-07 14:59:48,149|INFO|kang|choose test1 group!
+2016-07-07 14:59:58,786|INFO|kang|choose test1 group!
+2016-07-07 15:00:16,376|INFO|kang|choose test1 group!
+2016-07-07 15:00:26,174|INFO|kang|choose test1 group!
+2016-07-07 15:00:37,970|INFO|kang|run:ansible-playbook /Users/apple/ansible/ansible-playbook/test.yml --extra-vars "host=127.0.0.2",status:256
+2016-07-07 15:07:34,066|INFO|kang|choose test1 group!
+2016-07-07 15:08:02,607|INFO|kang|choose test1 group!
+2016-07-07 15:08:04,694|INFO|kang|choose test2 group!
+2016-07-07 15:08:06,372|INFO|kang|choose test1 group!

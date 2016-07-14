@@ -2,7 +2,7 @@
     width: 100%;
 }
 .header {
-    min-height: 50px;
+    height: 50px;
     background-color: #222;
 }
 .header .wrap {
@@ -185,6 +185,15 @@
 .oper-box {
 	overflow: hidden;
 }
+
+.main .wrap {
+    position: absolute;
+    left: 0;
+    top:41px;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
 /*������ѡ��*/
 .checkbox-wraper {
 	position: relative;
@@ -317,8 +326,6 @@ input[type=checkbox], input[type=radio] {
 
 /* ��Ƭ */
 .card {
-	width: 950px; 
-	min-height: 147px;
 }
 .card-content {
 	position: relative;
@@ -335,6 +342,7 @@ input[type=checkbox], input[type=radio] {
     -webkit-transition: all .3s;
     transition: all .3s;
 	cursor: pointer;
+    margin-bottom: 20px;
 }
 .card-content:hover{-webkit-box-shadow: 0px 0px 10px #d9d9d9;}
 .card-content:hover  .card-cell {
